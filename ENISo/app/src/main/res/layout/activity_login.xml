@@ -45,7 +45,7 @@
                 android:id="@+id/join"
                 android:layout_margin="10dp"
                 android:background="@drawable/buttonstyle2"
-                android:layout_width="wrap_content"
+                android:layout_width="100sp"
                 android:layout_height="wrap_content"
                 android:text="Join Now"
                 android:textColor="@color/white"/>

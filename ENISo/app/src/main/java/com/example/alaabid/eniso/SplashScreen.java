@@ -21,7 +21,7 @@ public class SplashScreen extends AppCompatActivity {
         //btnsub = (Button)findViewById(R.id.buttonsub);
         l1 = (LinearLayout) findViewById(R.id.l1);
         l2 = (LinearLayout) findViewById(R.id.l2);
-        uptodown = AnimationUtils.loadAnimation(this, R.anim.uptodown);
+        uptodown = AnimationUtils.loadAnimation(this, R.anim.mytransition);
         downtoup = AnimationUtils.loadAnimation(this, R.anim.downtoup);
         l1.setAnimation(uptodown);
         l2.setAnimation(downtoup);
