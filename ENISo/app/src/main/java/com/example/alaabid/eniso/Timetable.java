@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -23,7 +24,7 @@ public class Timetable extends AppCompatActivity {
         spinnerArray.add("IA_1_2");
         spinnerArray.add("IA_1_3");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, spinnerArray);
+                this, R.layout.spinner_item, spinnerArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         final Spinner spinner = findViewById(R.id.sp_timetable);
         spinner.setAdapter(adapter);
