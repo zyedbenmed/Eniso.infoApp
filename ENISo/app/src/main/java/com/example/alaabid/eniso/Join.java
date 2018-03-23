@@ -1,5 +1,6 @@
 package com.example.alaabid.eniso;
 
+import android.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,10 @@ public class Join extends AppCompatActivity {
         final String[] groups= new String[]{"1.1","1.2","1.3","2.1","2.2","2.3","3.1","3.2","3.3"};//existing groups
 
         setContentView(R.layout.activity_join);
+
+
+
+
         EditText ed_name=(EditText)findViewById(R.id.name);
         EditText ed_surname=(EditText)findViewById(R.id.surname);
         EditText ed_cin=(EditText)findViewById(R.id.cin);

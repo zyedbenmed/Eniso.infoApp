@@ -16,9 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Join" />
+        <activity android:name=".Join"/>
         <activity android:name=".Home" />
-        <activity android:name=".LearnMore" />
+        <activity android:name=".LearnMore"/>
         <activity android:name=".Login" />
         <activity android:name=".Timetable"></activity>
     </application>
