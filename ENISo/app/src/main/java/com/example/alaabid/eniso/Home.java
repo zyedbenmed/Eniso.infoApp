@@ -122,6 +122,10 @@ public class Home extends AppCompatActivity
                 startActivity(t);
 
                 break;
+            case R.id.nav_scheduler:
+                Intent x= new Intent(getApplicationContext(),EventSchedulerActivity.class);
+                startActivity(x);
+                break;
 
         }
 
