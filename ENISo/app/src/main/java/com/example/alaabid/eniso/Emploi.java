@@ -13,19 +13,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-public class Home extends AppCompatActivity
+import java.util.ArrayList;
+import java.util.List;
+
+public class Emploi extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    DrawerLayout drawer;
-    NavigationView navigationView;
-    Toolbar toolbar=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        // to check toolbar ****************************************
-        //*****************************
+        setContentView(R.layout.activity_emploi);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -38,26 +41,46 @@ public class Home extends AppCompatActivity
             }
         });*/
 
-        //************************************************
-        //*******************Code HERE********************
-        //************************************************
+        //*******************************************************
+        //********************* Code ALA**************************
 
 
+        List<String> spinnerArray =  new ArrayList<String>();
+        spinnerArray.add("IA_1_1");
+        spinnerArray.add("IA_1_2");
+        spinnerArray.add("IA_1_3");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, R.layout.spinner_item, spinnerArray);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        final Spinner spinner = findViewById(R.id.sp_timetable);
+        spinner.setAdapter(adapter);
+        final ImageView im_timetable = findViewById(R.id.im_timetable);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
+                Toast.makeText(getApplicationContext(),  parent.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+                switch (parent.getItemAtPosition(position).toString()){
+                    case "IA_1_1": im_timetable.setImageResource(R.drawable.ia_1_1);break;
+                    case "IA_1_2": im_timetable.setImageResource(R.drawable.ia_1_2);break;
+                    case "IA_1_3": im_timetable.setImageResource(R.drawable.ia_1_3);break; //ghalet..famech IA1-3
+                }
+            }
+            public void onNothingSelected(AdapterView<?> parent){
+
+            }
+        });
 
 
+        //*************************************************
+        //*************************************************
 
-
-
-        //****************************************************
-        //****************************************************
-
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 

@@ -16,11 +16,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Join"/>
-        <activity android:name=".Home" />
-        <activity android:name=".LearnMore"/>
+        <activity android:name=".Join" />
+        <activity android:name=".LearnMore" />
         <activity android:name=".Login" />
-        <activity android:name=".Timetable"></activity>
+        <activity android:name=".Timetable" />
+        <activity
+            android:name=".Home"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Documents"
+            android:label="@string/title_activity_documents"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Contatcts"
+            android:label="@string/title_activity_contatcts"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Profil"
+            android:label="@string/title_activity_profil"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Emploi"
+            android:label="@string/title_activity_emploi"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
