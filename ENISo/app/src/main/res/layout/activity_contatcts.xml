@@ -15,21 +15,48 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_gravity="center"
-            android:textSize="20sp"
-            android:textColor="#000"
-            android:text="don(t know"/>
-    </LinearLayout>
+        android:layout_marginTop="80dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp">
 
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_view"/>
 
 
+
+
+    <ImageView
+        android:background="#FFF"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@id/bt_add"
+        android:layout_alignLeft="@id/bt_add"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="14dp"/>
+    <ImageView
+        android:id="@+id/bt_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_circle_black_24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp"
+        android:tint="#D32F2F"/>
+
+
+</RelativeLayout>
+
+
+
+</LinearLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
@@ -39,6 +66,9 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_home"
         app:menu="@menu/activity_home_drawer"/>
+
+
+
 
 
 
