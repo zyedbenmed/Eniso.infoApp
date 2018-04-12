@@ -24,23 +24,15 @@ public class Home extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        // to check toolbar ****************************************
-        //*****************************
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
-        //************************************************
-        //*******************Code HERE********************
-        //************************************************
+
+        //***********************************************************
+        //*******************CODE HERE*******************************
+        //*******************inside of onCreate()********************
 
 
 
@@ -48,8 +40,8 @@ public class Home extends AppCompatActivity
 
 
 
-        //****************************************************
-        //****************************************************
+        //**********************END CODE***************************
+        //***********************************************************
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -60,6 +52,32 @@ public class Home extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+
+    //***************************CODE HERE *************************************
+    //************************outside of onCreate()*****************************
+    //**************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //******************************END CODE******************************************
+    //*********************************************************************************
+
 
     @Override
     public void onBackPressed() {
@@ -78,7 +96,7 @@ public class Home extends AppCompatActivity
         return true;
     }
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -91,7 +109,7 @@ public class Home extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -120,10 +138,9 @@ public class Home extends AppCompatActivity
             case R.id.nav_Profil:
                 Intent t= new Intent(getApplicationContext(),Profil.class);
                 startActivity(t);
-
                 break;
             case R.id.nav_scheduler:
-                Intent x= new Intent(getApplicationContext(),EventSchedulerActivity.class);
+                Intent x= new Intent(getApplicationContext(),Event.class);
                 startActivity(x);
                 break;
 

@@ -24,18 +24,11 @@ public class Profil extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
-        //************************************************
-        //*******************Code HERE********************
-        //************************************************
+
+        //***********************************************************
+        //*******************CODE HERE*******************************
+        //*******************inside of onCreate()********************
 
 
 
@@ -43,8 +36,8 @@ public class Profil extends AppCompatActivity
 
 
 
-        //****************************************************
-        //****************************************************
+        //**********************END CODE***************************
+        //***********************************************************
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -55,6 +48,32 @@ public class Profil extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+
+    //***************************CODE HERE *************************************
+    //************************outside of onCreate()*****************************
+    //**************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //******************************END CODE******************************************
+    //*********************************************************************************
+
 
     @Override
     public void onBackPressed() {
@@ -73,7 +92,7 @@ public class Profil extends AppCompatActivity
         return true;
     }
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -86,7 +105,7 @@ public class Profil extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -115,10 +134,9 @@ public class Profil extends AppCompatActivity
             case R.id.nav_Profil:
                 Intent t= new Intent(getApplicationContext(),Profil.class);
                 startActivity(t);
-
                 break;
             case R.id.nav_scheduler:
-                Intent x= new Intent(getApplicationContext(),EventSchedulerActivity.class);
+                Intent x= new Intent(getApplicationContext(),Event.class);
                 startActivity(x);
                 break;
 

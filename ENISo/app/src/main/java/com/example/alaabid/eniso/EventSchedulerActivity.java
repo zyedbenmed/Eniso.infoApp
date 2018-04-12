@@ -225,7 +225,7 @@ private void openDialog(){
         //String title, desc;
         int posEventToEdit;
 @Override
-public void applyTexts(String title, String desc) {
+public void  applyTexts(String title, String desc) {
         if(doEdit) editEvent(posEventToEdit, title, desc);
         else addNewEvent(title, desc);
         }

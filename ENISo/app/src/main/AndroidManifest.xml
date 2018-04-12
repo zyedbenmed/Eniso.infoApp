@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.alaabid.eniso">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -44,6 +45,10 @@
         <activity
             android:name=".Emploi"
             android:label="@string/title_activity_emploi"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Event"
+            android:label="@string/title_activity_event"
             android:theme="@style/AppTheme"></activity>
     </application>
 

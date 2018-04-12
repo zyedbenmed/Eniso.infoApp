@@ -10,4 +10,5 @@
     <string name="title_activity_contatcts">Contatcts</string>
     <string name="title_activity_profil">Profil</string>
     <string name="title_activity_emploi">Emploi</string>
+    <string name="title_activity_event">Event</string>
 </resources>
