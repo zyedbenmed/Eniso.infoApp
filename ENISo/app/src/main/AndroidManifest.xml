@@ -21,15 +21,10 @@
         <activity android:name=".Join" />
         <activity android:name=".LearnMore" />
         <activity android:name=".Login" />
-        <activity android:name=".Timetable" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".EventSchedulerActivity"
-            android:label="Event Scheduler"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
             android:name=".Documents"
             android:label="@string/title_activity_documents"
