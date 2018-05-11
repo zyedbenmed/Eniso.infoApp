@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,14 +25,15 @@ import java.util.List;
 
 public class Emploi extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    String nom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emploi);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        Bundle extras = getIntent().getExtras();
+        nom = extras.getString("nom");
          //*******************************************************
         //********************* CODE HERE**************************
         //*********************inside of onCreate()****************
@@ -73,6 +75,9 @@ public class Emploi extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = headerView.findViewById(R.id.navUsrName);
+        navUsername.setText(nom);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -146,27 +151,33 @@ public class Emploi extends AppCompatActivity
 
             case R.id.nav_home:
                 Intent h= new Intent(getApplicationContext(),Home.class);
-                startActivity(h);
+                h.putExtra("nom", nom);
+                startActivityForResult(h, 1);
                 break;
             case R.id.nav_Documents:
                 Intent i= new Intent(getApplicationContext(),Documents.class);
-                startActivity(i);
+                i.putExtra("nom", nom);
+                startActivityForResult(i, 1);
                 break;
             case R.id.nav_contact:
                 Intent g= new Intent(getApplicationContext(),Contatcts.class);
-                startActivity(g);
+                g.putExtra("nom", nom);
+                startActivityForResult(g, 1);
                 break;
             case R.id.nav_Timetable:
                 Intent s= new Intent(getApplicationContext(),Emploi.class);
-                startActivity(s);
+                s.putExtra("nom", nom);
+                startActivityForResult(s, 1);
                 break;
             case R.id.nav_Profil:
                 Intent t= new Intent(getApplicationContext(),Profil.class);
-                startActivity(t);
+                t.putExtra("nom", nom);
+                startActivityForResult(t, 1);
                 break;
             case R.id.nav_scheduler:
                 Intent x= new Intent(getApplicationContext(),Event.class);
-                startActivity(x);
+                x.putExtra("nom", nom);
+                startActivityForResult(x, 1);
                 break;
 
         }

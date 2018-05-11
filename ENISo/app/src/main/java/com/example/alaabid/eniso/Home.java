@@ -13,12 +13,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
     NavigationView navigationView;
     Toolbar toolbar=null;
+    String nom;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,6 @@ public class Home extends AppCompatActivity
 
 
 
-
         //**********************END CODE***************************
         //***********************************************************
 
@@ -50,6 +52,11 @@ public class Home extends AppCompatActivity
         toggle.syncState();
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
+        Bundle extras = getIntent().getExtras();
+        nom = extras.getString("nom");
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = headerView.findViewById(R.id.navUsrName);
+        navUsername.setText(nom);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -121,27 +128,33 @@ public class Home extends AppCompatActivity
 
             case R.id.nav_home:
                 Intent h= new Intent(getApplicationContext(),Home.class);
-                startActivity(h);
+                h.putExtra("nom", nom);
+                startActivityForResult(h, 1);
                 break;
             case R.id.nav_Documents:
                 Intent i= new Intent(getApplicationContext(),Documents.class);
-                startActivity(i);
+                i.putExtra("nom", nom);
+                startActivityForResult(i, 1);
                 break;
             case R.id.nav_contact:
                 Intent g= new Intent(getApplicationContext(),Contatcts.class);
-                startActivity(g);
+                g.putExtra("nom", nom);
+                startActivityForResult(g, 1);
                 break;
             case R.id.nav_Timetable:
                 Intent s= new Intent(getApplicationContext(),Emploi.class);
-                startActivity(s);
+                s.putExtra("nom", nom);
+                startActivityForResult(s, 1);
                 break;
             case R.id.nav_Profil:
                 Intent t= new Intent(getApplicationContext(),Profil.class);
-                startActivity(t);
+                t.putExtra("nom", nom);
+                startActivityForResult(t, 1);
                 break;
             case R.id.nav_scheduler:
                 Intent x= new Intent(getApplicationContext(),Event.class);
-                startActivity(x);
+                x.putExtra("nom", nom);
+                startActivityForResult(x, 1);
                 break;
 
         }
