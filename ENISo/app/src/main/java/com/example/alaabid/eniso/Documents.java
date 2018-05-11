@@ -158,7 +158,7 @@ public class Documents extends AppCompatActivity
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(Documents.this);
 
-                builder.setTitle("Choose option");
+                builder.setTitle("Are You Sure To Log Out ?");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -171,7 +171,7 @@ public class Documents extends AppCompatActivity
 
                             Intent i1= new Intent(Documents.this,Login.class);
                             startActivity(i1);
-
+                            finish();
                         }
                     }
                 });
