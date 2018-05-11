@@ -105,4 +105,9 @@ public class Login extends AppCompatActivity {
         }catch(Exception ex){
             ex.printStackTrace();}
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }
