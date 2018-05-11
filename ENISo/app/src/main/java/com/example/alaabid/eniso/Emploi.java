@@ -218,7 +218,7 @@ public class Emploi extends AppCompatActivity
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(Emploi.this);
 
-                builder.setTitle("Choose option");
+                builder.setTitle("Are You Sure To Log Out ?");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -230,7 +230,7 @@ public class Emploi extends AppCompatActivity
                         if(which == 1){
                             Intent i1= new Intent(Emploi.this,Login.class);
                             startActivity(i1);
-
+                            finish();
                         }
                     }
                 });
