@@ -39,7 +39,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Contatcts extends AppCompatActivity
+public class Contacts extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     DrawerLayout drawer;
@@ -49,9 +49,9 @@ public class Contatcts extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contatcts);
+        setContentView(R.layout.activity_contacts);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Bundle extras = getIntent().getExtras();
         nom = extras.getString("nom");
@@ -70,13 +70,13 @@ public class Contatcts extends AppCompatActivity
         //**********************END CODE***************************
         //***********************************************************
 
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
         TextView navUsername = headerView.findViewById(R.id.navUsrName);
         navUsername.setText(nom);
@@ -111,7 +111,7 @@ public class Contatcts extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -161,7 +161,7 @@ public class Contatcts extends AppCompatActivity
                 startActivityForResult(i, 1);
                 break;
             case R.id.nav_contact:
-                Intent g= new Intent(getApplicationContext(),Contatcts.class);
+                Intent g= new Intent(getApplicationContext(),Contacts.class);
                 g.putExtra("nom", nom);
                 startActivityForResult(g, 1);
                 break;
@@ -183,7 +183,7 @@ public class Contatcts extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

@@ -131,7 +131,7 @@ public class Profil extends AppCompatActivity
                 startActivityForResult(i, 1);
                 break;
             case R.id.nav_contact:
-                Intent g= new Intent(getApplicationContext(),Contatcts.class);
+                Intent g= new Intent(getApplicationContext(),Contacts.class);
                 g.putExtra("nom", nom);
                 startActivityForResult(g, 1);
                 break;
