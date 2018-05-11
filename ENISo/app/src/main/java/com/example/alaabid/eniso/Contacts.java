@@ -1,44 +1,19 @@
 package com.example.alaabid.eniso;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.example.alaabid.eniso.EventSchedulerPackage.EventAdapter;
-import com.example.alaabid.eniso.EventSchedulerPackage.EventDialog;
-import com.example.alaabid.eniso.EventSchedulerPackage.EventModel;
-import com.example.alaabid.eniso.EventSchedulerPackage.MySingleton;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-public class Contatcts extends AppCompatActivity
+public class Contacts extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     DrawerLayout drawer;
@@ -48,7 +23,7 @@ public class Contatcts extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contatcts);
+        setContentView(R.layout.activity_contacts);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -153,7 +128,7 @@ public class Contatcts extends AppCompatActivity
                 startActivity(i);
                 break;
             case R.id.nav_contact:
-                Intent g= new Intent(getApplicationContext(),Contatcts.class);
+                Intent g= new Intent(getApplicationContext(),Contacts.class);
                 startActivity(g);
                 break;
             case R.id.nav_Timetable:
@@ -168,6 +143,31 @@ public class Contatcts extends AppCompatActivity
                 Intent x= new Intent(getApplicationContext(),Event.class);
                 startActivity(x);
                 break;
+            case R.id.logout:
+                CharSequence options[] = new CharSequence[]{"Stay", "log out"};
+
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(Contacts.this);
+
+                builder.setTitle("Choose option");
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0){
+                            Intent i = new Intent(Contacts.this,Home.class);
+
+                            startActivity(i);
+                        }
+                        if(which == 1){
+
+                           Intent i1= new Intent(Contacts.this,Login.class);
+                           startActivity(i1);
+
+                        }
+                    }
+                });
+
+                builder.show();
 
         }
 

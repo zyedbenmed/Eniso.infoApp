@@ -46,7 +46,7 @@
             android:layout_marginLeft="74dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
-            android:popupBackground="@color/lightblue" />
+            android:popupBackground="?attr/colorAccent" />
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -1,14 +1,13 @@
 package com.example.alaabid.eniso;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -123,7 +122,7 @@ public class Documents extends AppCompatActivity
                 startActivity(i);
                 break;
             case R.id.nav_contact:
-                Intent g= new Intent(getApplicationContext(),Contatcts.class);
+                Intent g= new Intent(getApplicationContext(),Contacts.class);
                 startActivity(g);
                 break;
             case R.id.nav_Timetable:
@@ -138,6 +137,31 @@ public class Documents extends AppCompatActivity
                 Intent x= new Intent(getApplicationContext(),Event.class);
                 startActivity(x);
                 break;
+            case R.id.logout:
+                CharSequence options[] = new CharSequence[]{"Stay", "log out"};
+
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(Documents.this);
+
+                builder.setTitle("Choose option");
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0){
+                            Intent i = new Intent(Documents.this,Home.class);
+
+                            startActivity(i);
+                        }
+                        if(which == 1){
+
+                            Intent i1= new Intent(Documents.this,Login.class);
+                            startActivity(i1);
+
+                        }
+                    }
+                });
+
+                builder.show();
 
 
         }

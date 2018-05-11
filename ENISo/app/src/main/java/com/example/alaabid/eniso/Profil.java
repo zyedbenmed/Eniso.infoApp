@@ -1,14 +1,13 @@
 package com.example.alaabid.eniso;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -113,34 +112,73 @@ public class Profil extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        switch (id){
+        switch (id) {
 
             case R.id.nav_home:
-                Intent h= new Intent(getApplicationContext(),Home.class);
+                Intent h = new Intent(getApplicationContext(), Home.class);
                 startActivity(h);
                 break;
             case R.id.nav_Documents:
-                Intent i= new Intent(getApplicationContext(),Documents.class);
+                Intent i = new Intent(getApplicationContext(), Documents.class);
                 startActivity(i);
                 break;
             case R.id.nav_contact:
-                Intent g= new Intent(getApplicationContext(),Contatcts.class);
+                Intent g = new Intent(getApplicationContext(), Contacts.class);
                 startActivity(g);
                 break;
             case R.id.nav_Timetable:
-                Intent s= new Intent(getApplicationContext(),Emploi.class);
+                Intent s = new Intent(getApplicationContext(), Emploi.class);
                 startActivity(s);
                 break;
             case R.id.nav_Profil:
-                Intent t= new Intent(getApplicationContext(),Profil.class);
+                Intent t = new Intent(getApplicationContext(), Profil.class);
                 startActivity(t);
                 break;
             case R.id.nav_scheduler:
-                Intent x= new Intent(getApplicationContext(),Event.class);
+                Intent x = new Intent(getApplicationContext(), Event.class);
                 startActivity(x);
                 break;
+            case R.id.logout:
+
+                CharSequence options[] = new CharSequence[]{"Stay", "log out"};
+                final AlertDialog.Builder builder = new AlertDialog.Builder(Profil.this);
+
+                builder.setTitle("Choose option");
+                builder.setItems (options, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (which == 0) {
+                        Intent i = new Intent(Profil.this, Home.class);
+
+                        startActivity(i);
+                    }
+                    if (which == 1) {
+
+                        Intent i1= new Intent(Profil.this,Login.class);
+                        startActivity(i1);
+                    }
+                }
+            });
+
+                builder.show();
 
         }
+                /*AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+                alertDialog.setTitle("Are You Sure?");
+                alertDialog.setMessage("Are You Sure To Log Out?");
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"YES",new DialogInterface.OnClickListener(){
+                    @Override
+                    public  void onClick(DialogInterface dialog , int which) {
+                        dialog.dismiss();
+                    }});
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "NO", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        }
+                        alertDialog.show();*/
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
