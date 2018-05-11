@@ -30,7 +30,8 @@ public class Profil extends AppCompatActivity
         nom = extras.getString("nom");
 
 
-        //***********************************************************
+
+
         //*******************CODE HERE*******************************
         //*******************inside of onCreate()********************
 
