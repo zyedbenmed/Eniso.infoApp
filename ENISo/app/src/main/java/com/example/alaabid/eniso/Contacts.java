@@ -1,9 +1,11 @@
 package com.example.alaabid.eniso;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -180,7 +182,31 @@ public class Contacts extends AppCompatActivity
                 x.putExtra("nom", nom);
                 startActivityForResult(x, 1);
                 break;
+            case R.id.logout:
+                CharSequence options[] = new CharSequence[]{"Stay", "log out"};
 
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(Contacts.this);
+
+                builder.setTitle("Choose option");
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0){
+                            Intent i = new Intent(Contacts.this,Home.class);
+                            i.putExtra("nom", nom);
+                            startActivityForResult(i, 1);
+                        }
+                        if(which == 1){
+
+                            Intent i1= new Intent(Contacts.this,Login.class);
+                            startActivity(i1);
+
+                        }
+                    }
+                });
+
+                builder.show();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
