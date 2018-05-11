@@ -12,10 +12,22 @@
         layout="@layout/app_bar_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp">
+
+        <include layout="@layout/user_layout" android:id="@+id/users_appBar" />
+
+
+        <ListView
+            android:id="@+id/listV"
+            android:layout_below="@+id/users_appBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        </ListView>
 
         <!-- YOU WRITE YOUR XML HERE -->
         <!--START WITH CHOOSING THE lAYOUT-->
@@ -39,7 +51,9 @@
         -->
 
 
-</LinearLayout>
+</RelativeLayout>
+
+
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
@@ -49,8 +63,6 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_home"
         app:menu="@menu/activity_home_drawer"/>
-
-
 
 
 

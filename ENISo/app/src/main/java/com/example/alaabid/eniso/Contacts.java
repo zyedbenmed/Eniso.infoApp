@@ -2,6 +2,7 @@ package com.example.alaabid.eniso;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,7 +19,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,12 +46,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class Contacts extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     DrawerLayout drawer;
     NavigationView navigationView;
-    Toolbar toolbar=null;
+    Toolbar toolbar;
+    private ListView listView;
     String nom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +65,13 @@ public class Contacts extends AppCompatActivity
         setSupportActionBar(toolbar);
         Bundle extras = getIntent().getExtras();
         nom = extras.getString("nom");
+
+        listView = findViewById(R.id.listV);
+
+        CustomAdapter customAdapter=new CustomAdapter();
+        listView.setAdapter(customAdapter);
+
+
 
 
         //***********************************************************
@@ -90,6 +105,87 @@ public class Contacts extends AppCompatActivity
     //************************outside of onCreate()*****************************
     //**************************************************************************
 
+    int [] IMAGES ={R.drawable.default_avatar,R.drawable.default_avatar,R.drawable.default_avatar,R.drawable.default_avatar,R.drawable.default_avatar,R.drawable.default_avatar};
+    String [] EMAIL ={"@gmail.com","aa@gmail.com","@gmail.com","@gmail.com","@gmail.com","@gmail.com","@gmail.com"};
+    String [] NAMES ={"taha","taha","taha","taha","taha","taha","taha","taha","taha","taha","taha","taha","taha","taha","taha","taha","taha","taha","taha","taha","taha","taha","taha","taha"};
+
+    private class CustomAdapter extends BaseAdapter {
+
+        @Override
+        public int getCount() {
+            return IMAGES.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            convertView = getLayoutInflater().inflate(R.layout.user_single_layout,null);
+
+            TextView name = convertView.findViewById(R.id.user_single_name);
+            final TextView mail = convertView.findViewById(R.id.user_single_email);
+            CircleImageView image = convertView.findViewById(R.id.user_single_image);
+
+            // convertView = getLayoutInflater().inflate(R.layout.users_single_layout,null);
+
+            name.setText(NAMES[position]);
+            mail.setText(EMAIL[position]);
+            image.setImageResource(IMAGES[position]);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+
+                    CharSequence options[] = new CharSequence[]{"Show Informations", "Send Email"};
+
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(Contacts.this);
+
+                    builder.setTitle("Choose option");
+                    builder.setItems(options, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            String ch = EMAIL[position];
+
+
+                            if(which == 1){
+                                Intent i =new Intent(Intent.ACTION_SENDTO);
+                                i.setType("text/plain");
+                                i.setData(Uri.parse("mailto:" + ch));
+                                //i.putExtra(Intent.EXTRA_SUBJECT,"Q");
+                                //i.putExtra(Intent.EXTRA_TEXT,"tester le tp4 android");
+                                startActivity(i);
+                            }
+
+                        }
+                    });
+
+                    builder.show();
+
+
+
+
+
+                }
+            });
+
+
+            return convertView;
+
+        }
+
+
+
+    }
 
 
 
@@ -201,6 +297,7 @@ public class Contacts extends AppCompatActivity
 
                             Intent i1= new Intent(Contacts.this,Login.class);
                             startActivity(i1);
+
 
                         }
                     }
