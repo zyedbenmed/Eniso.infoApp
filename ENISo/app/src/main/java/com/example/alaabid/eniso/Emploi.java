@@ -1,9 +1,11 @@
 package com.example.alaabid.eniso;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -42,7 +44,23 @@ public class Emploi extends AppCompatActivity
         List<String> spinnerArray =  new ArrayList<String>();
         spinnerArray.add("IA_1_1");
         spinnerArray.add("IA_1_2");
-        spinnerArray.add("IA_1_3");
+        spinnerArray.add("IA_2_1");
+        spinnerArray.add("IA_2_2");
+        spinnerArray.add("IA_2_3");
+        spinnerArray.add("GTE_1_1");
+        spinnerArray.add("EI_1_1");
+        spinnerArray.add("EI_1_2");
+        spinnerArray.add("EI_1_3");
+        spinnerArray.add("EI_2_1");
+        spinnerArray.add("EI_2_2");
+        spinnerArray.add("EI_2_3");
+        spinnerArray.add("Meca_1_1");
+        spinnerArray.add("Meca_1_2");
+        spinnerArray.add("Meca_2_1");
+        spinnerArray.add("Meca_2_2");
+        spinnerArray.add("Meca_2_3");
+        spinnerArray.add("GTE_1_1");
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, R.layout.spinner_item, spinnerArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -56,7 +74,22 @@ public class Emploi extends AppCompatActivity
                 switch (parent.getItemAtPosition(position).toString()){
                     case "IA_1_1": im_timetable.setImageResource(R.drawable.ia_1_1);break;
                     case "IA_1_2": im_timetable.setImageResource(R.drawable.ia_1_2);break;
-                    case "IA_1_3": im_timetable.setImageResource(R.drawable.ia_1_3);break; //ghalet..famech IA1-3
+                    case "IA_2_1": im_timetable.setImageResource(R.drawable.ia_2_1);break;
+                    case "IA_2_2": im_timetable.setImageResource(R.drawable.ia_2_2);break;
+                    case "IA_2_3": im_timetable.setImageResource(R.drawable.ia_2_3);break;
+                    case "GTE_1_1": im_timetable.setImageResource(R.drawable.gte_1_1);break;
+                    case "EI_1_1": im_timetable.setImageResource(R.drawable.ei_1_1);break;
+                    case "EI_1_2": im_timetable.setImageResource(R.drawable.ei_1_2);break;
+                    case "EI_1_3": im_timetable.setImageResource(R.drawable.ei_1_3);break;
+                    case "EI_2_1": im_timetable.setImageResource(R.drawable.ei_2_1);break;
+                    case "EI_2_2": im_timetable.setImageResource(R.drawable.ei_2_2);break;
+                    case "EI_2_3": im_timetable.setImageResource(R.drawable.ei_2_3);break;
+                    case "Meca_1_1": im_timetable.setImageResource(R.drawable.meca_1_1);break;
+                    case "Meca_1_2": im_timetable.setImageResource(R.drawable.meca_1_2);break;
+                    case "Meca_2_1": im_timetable.setImageResource(R.drawable.meca_2_1);break;
+                    case "Meca_2_2": im_timetable.setImageResource(R.drawable.meca_2_2);break;
+                    case "Meca_2_3": im_timetable.setImageResource(R.drawable.meca_2_3);break;
+                    case "GP_1_1": im_timetable.setImageResource(R.drawable.gp_1_1);break;
                 }
             }
             public void onNothingSelected(AdapterView<?> parent){
@@ -179,6 +212,30 @@ public class Emploi extends AppCompatActivity
                 x.putExtra("nom", nom);
                 startActivityForResult(x, 1);
                 break;
+            case R.id.logout:
+                CharSequence options[] = new CharSequence[]{"Stay", "log out"};
+
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(Emploi.this);
+
+                builder.setTitle("Choose option");
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0){
+                            Intent i = new Intent(Emploi.this,Home.class);
+                            i.putExtra("nom", nom);
+                            startActivityForResult(i, 1);
+                        }
+                        if(which == 1){
+                            Intent i1= new Intent(Emploi.this,Login.class);
+                            startActivity(i1);
+
+                        }
+                    }
+                });
+
+                builder.show();
 
         }
 
