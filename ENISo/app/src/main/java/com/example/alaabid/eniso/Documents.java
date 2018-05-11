@@ -28,7 +28,7 @@ public class Documents extends AppCompatActivity
         nom = extras.getString("nom");
 
 
-        //************************************************
+        //********************************
         //*******************Code HERE********************
         //****************inside onCreate()****************
 
