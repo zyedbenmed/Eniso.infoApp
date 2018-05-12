@@ -15,7 +15,7 @@
         android:layout_height="match_parent" />
     <!--**************XML HERE********************-->
     <!-- Start with defining the layout Relative or Linear -->
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp">
@@ -24,12 +24,27 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:textSize="20sp"
+            android:layout_marginTop="143dp"
+            android:text="Click below to diplay the files"
+            android:textAlignment="center"
             android:textColor="#000"
-            android:text="documents to download"/>
-    </LinearLayout>
+            android:textSize="20sp"
+            android:id="@+id/textView8" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView8"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="88dp"
+            android:text="Dislay files" />
+
+
+    </RelativeLayout>
 
 
 
@@ -37,7 +52,7 @@
 
     <!--*****************End Code***********************-->
 
-    <android.support.design.widget.NavigationView
+     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

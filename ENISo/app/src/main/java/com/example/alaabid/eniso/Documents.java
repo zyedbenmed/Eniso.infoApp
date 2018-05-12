@@ -2,6 +2,7 @@ package com.example.alaabid.eniso;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,11 +16,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
+
+import java.io.FileOutputStream;
+import java.io.InputStream;
+
 
 public class Documents extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     String nom;
+    private Button mbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +35,44 @@ public class Documents extends AppCompatActivity
         setSupportActionBar(toolbar);
         Bundle extras = getIntent().getExtras();
         nom = extras.getString("nom");
+
+        mbtn = findViewById(R.id.button);
+
+        mbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                CharSequence options[] = new CharSequence[]{"DS Android 2013", "EXAMEN Android 2014", "DS Reseau 2007", "cours OS IA2"};
+
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(Documents.this);
+
+                builder.setTitle("choose file");
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0){
+
+
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://jeanferdysusini.free.fr/Cours/CP48/NFA023-Examen-2012.pdf")));
+
+                        }
+                        if(which == 1){
+
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://virtuelcampus.univ-msila.dz/fmi/wp-content/uploads/2017/01/corriger-examen-P-Mobile-2016-2017.pdf")));
+                        }
+                        if(which == 2){
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.gipsa-lab.grenoble-inp.fr/~christian.bulfone/MIASHS-DCISS/PDF/EXAM_janvier-2012.pdf")));
+                        }
+                        if(which == 3){
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.iutbayonne.univ-pau.fr/~dalmau/documents/cours/infdus/Guide%20RTOS.pdf")));
+                        }
+                    }
+                });
+
+                builder.show();
+            }
+        });
 
 
         //********************************
