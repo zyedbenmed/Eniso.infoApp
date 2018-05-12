@@ -43,6 +43,12 @@
             android:paddingStart="16dp"
             android:paddingTop="35dp"
 
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03" />
+
         <ListView
             android:id="@+id/articlesLV"
             android:layout_width="331dp"

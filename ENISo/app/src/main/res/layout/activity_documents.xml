@@ -30,7 +30,7 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="143dp"
-            android:text="Click below to diplay the files"
+            android:text="Click below to display the files"
             android:textAlignment="center"
             android:textColor="#000"
             android:textSize="20sp" />
