@@ -187,11 +187,7 @@ public class Documents extends AppCompatActivity
                 s.putExtra("nom", nom);
                 startActivityForResult(s, 1);
                 break;
-            case R.id.nav_Profil:
-                Intent t= new Intent(getApplicationContext(),Profil.class);
-                t.putExtra("nom", nom);
-                startActivityForResult(t, 1);
-                break;
+
             case R.id.nav_scheduler:
                 Intent x= new Intent(getApplicationContext(),Event.class);
                 x.putExtra("nom", nom);

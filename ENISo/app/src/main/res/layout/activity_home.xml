@@ -14,36 +14,34 @@
         android:layout_height="match_parent" />
 
     <!--**************XML HERE********************-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/side_nav_bar"
+        android:layout_marginTop="50dp">
+
+
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="310dp"
-            android:layout_height="121dp"
+            android:layout_width="384dp"
+            android:layout_height="128dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/front"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/enisoo"
             android:fontFamily="cursive"
             android:paddingBottom="16dp"
             android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:text="WELCOME TO ENISo"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
-            android:textSize="30sp"
-            android:textStyle="bold|italic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.127" />
-
+            android:paddingStart="16dp"
+            android:paddingTop="35dp"
 
         <ListView
             android:id="@+id/articlesLV"
@@ -59,9 +57,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"></ListView>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03" />
+
+
+
 
 
     </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
     <!-- Start with defining the layout Relative or Linear -->
 
     <!--*****************End Code***********************-->
@@ -75,4 +82,4 @@
         app:headerLayout="@layout/nav_header_home"
         app:menu="@menu/activity_home_drawer" />
 
-</android.support.v4.widget.DrawerLayout>
+  </android.support.v4.widget.DrawerLayout>

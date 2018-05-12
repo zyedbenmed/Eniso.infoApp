@@ -36,10 +36,6 @@
             android:label="@string/title_activity_contatcts"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Profil"
-            android:label="@string/title_activity_profil"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name=".Emploi"
             android:label="@string/title_activity_emploi"
             android:theme="@style/AppTheme" />
