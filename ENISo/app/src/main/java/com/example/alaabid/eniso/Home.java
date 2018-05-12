@@ -15,6 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class Home extends AppCompatActivity
@@ -38,9 +41,28 @@ public class Home extends AppCompatActivity
         //***********************************************************
         //*******************CODE HERE*******************************
         //*******************inside of onCreate()********************
+        String[] arr = {"Soutenances Projets Innovation / App PS (update 1)\n\nLes soutenances de projet Innovation sont planifiées ce Samedi à partir de 8h30 pour les IA1, GTE1 et IA2. \n" +
+                "Le planning est joint\n\nécrit par Taha Ben Salah - (le 11 May 2018) ",
+                "Quatre Offres de stages d'été au groupe STUNAS Industries sousse\n\n" +
+                        "Mission: Participation à la mise en place  d'outil ERP (Enterprise Ressource Planning) pour  le pilotage de l’entreprise. \n" +
+                        "\n" +
+                        "Durée: La durée du stage est de deux mois avec possibilité de continuité en projet innovation rémunérée.\n" +
+                        "\n" +
+                        "http://www.stunasindustries.com \n" +
+                        "\n" +
+                        "\n" +
+                        "Pour plus d'information contacter M. Imed Bennour, Service des stages.\n écrit par Imed Bennour - (le 10 May 2018) ",
+                        "Réunion TCPC\n\n"+"Tous les élèves intéressés de faire partie de l'équipe d'irganisation du TCPC2018 sont priés de nous joindre auj lundi 07/05/2018 à 14H à l'amphi.\n\n"
+                        + "\n\nécrit par Taha Ben Salah - (le 07 May 2018)",
+                        "Matériel département Informatique\n\n"+"Merci de rendre tout le matériel du département informatique ( raspberry, roue moteurs, servo moteurs, cartes commande capteurs,.....) avant le jeudi 26/04/2018 ( pour Eniso IoT challenge du 28/04/2018 au 01/05/2018).\n\n" +
+                                "Vous pouvez le récupérer à partir de mercredi 02/05/2018.\n\nécrit par Sameh Gassab - (le 21 Apr 2018) ",
+                        "DS Compilation, Round 3\n\n"+"Le DS Compilation est programmé le Samedi  5 mai à 14H."+
+                                "\n\nécrit par Mohamed Nazih Omri - (le 19 Apr 2018) "
 
-
-
+        };
+        ListAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item, arr);
+        ListView listView = (ListView) findViewById(R.id.articlesLV);
+        listView.setAdapter(adapter);
 
 
 
