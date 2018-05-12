@@ -25,6 +25,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import de.hdodenhof.circleimageview.CircleImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -45,8 +46,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Contacts extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -171,13 +170,8 @@ public class Contacts extends AppCompatActivity
 
                     builder.show();
 
-
-
-
-
                 }
             });
-
 
             return convertView;
 

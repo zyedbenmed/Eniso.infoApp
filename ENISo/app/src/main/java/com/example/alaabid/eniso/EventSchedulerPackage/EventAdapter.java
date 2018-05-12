@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.example.alaabid.eniso.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Random;
 
@@ -40,7 +42,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         this.mCtx = mContext;
         this.eventList = eventList;
     }
-
     @Override
     public EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
@@ -51,7 +52,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     @Override
     public void onBindViewHolder(EventViewHolder holder, int position) {
         EventModel event = eventList.get(position);
-        //holder.tv_hour.setText(event.getHour());
+        try {
+            holder.tv_date.setText(DateFormat.getDateInstance().format(new SimpleDateFormat("yyyy-MM-dd").parse(event.getDate())));
+        }
+        catch (Exception ex){
+
+        }
+        String hh=event.getHour();
+        if(hh.length()>8)holder.tv_hour.setText(hh.substring(0,8));
+        else if(hh.length()==3)holder.tv_hour.setText("0"+hh);
+        else holder.tv_hour.setText(hh);
         holder.tv_desc.setText(event.getDescr());
         holder.tv_title.setText(event.getTitle());
         Random rnd = new Random();
@@ -69,14 +79,15 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     }
 
     class EventViewHolder extends RecyclerView.ViewHolder{
-        TextView tv_desc, tv_title, tv_hour;
+        TextView tv_desc, tv_title, tv_hour, tv_date;
         CardView cardy;
         ImageView bt_close, bt_edit;
         public EventViewHolder(View itemView) {
             super(itemView);
             tv_title = itemView.findViewById(R.id.eventTitle);
+            tv_date = itemView.findViewById(R.id.eventDate);
             tv_desc = itemView.findViewById(R.id.eventDesc);
-            //tv_hour = itemView.findViewById(R.id.eventHour);
+            tv_hour = itemView.findViewById(R.id.eventHour);
             cardy = itemView.findViewById(R.id.cardView);
             bt_close = itemView.findViewById(R.id.ibt_close);
             bt_edit = itemView.findViewById(R.id.ibt_edit);

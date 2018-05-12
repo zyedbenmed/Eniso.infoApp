@@ -16,5 +16,21 @@
         android:id="@+id/et_desc"
         android:hint="Event description"
         android:layout_below="@+id/et_title"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/date_edit_text"
+        android:clickable="true"
+        android:inputType="datetime"
+        android:hint="Date"
+        android:layout_below="@+id/et_desc"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/time_edit_text"
+        android:clickable="true"
+        android:inputType="datetime"
+        android:hint="Time"
+        android:layout_below="@+id/date_edit_text"/>
 
 </RelativeLayout>

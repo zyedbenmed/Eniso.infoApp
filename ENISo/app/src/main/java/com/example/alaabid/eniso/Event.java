@@ -163,9 +163,9 @@ public class Event extends AppCompatActivity
 
     }
 
-    private void addNewEvent(final String title, final String desc) {
+    private void addNewEvent(final String title, final String desc, final String date, final String hour) {
         EventModel addedEvent = new EventModel(eventList.get(eventList.size() - 1).getId() + 1,
-                title, "1:05:03", "1995-03-01", desc, "ala");
+                title, hour, date, desc, "ala");
         eventList.add(addedEvent);
         adapter.notifyItemInserted(eventList.size() - 1);
         String writeUrl = "http://alaabid.cf/write_into_event.php";
@@ -183,8 +183,8 @@ public class Event extends AppCompatActivity
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("date", "'1995-03-01'");
-                params.put("hour", "'1:05:03'");
+                params.put("date", "'"+date+"'");
+                params.put("hour", "'"+hour+"'");
                 params.put("title", "'" + title + "'");
                 params.put("descr", "'" + desc + "'");
                 params.put("author", "'ala'");
@@ -220,12 +220,16 @@ public class Event extends AppCompatActivity
 
     }
 
-    private void editEvent(final int posEventToEdit, String argtitle, String argdesc) {
-        final String title, desc;
+    private void editEvent(final int posEventToEdit, String argtitle, String argdesc, String argdate, String arghour) {
+        final String title, desc, date, hour;
         if (argtitle.equals("")) title = eventList.get(posEventToEdit).getTitle();
         else title = argtitle;
         if (argdesc.equals("")) desc = eventList.get(posEventToEdit).getDescr();
         else desc = argdesc;
+        if (argdesc.equals("")) date = eventList.get(posEventToEdit).getDate();
+        else date = argdesc;
+        if (argdesc.equals("")) hour = eventList.get(posEventToEdit).getHour();
+        else hour = argdesc;
         eventList.get(posEventToEdit).setTitle(title);
         eventList.get(posEventToEdit).setDescr(desc);
         adapter.notifyItemChanged(posEventToEdit);
@@ -244,14 +248,21 @@ public class Event extends AppCompatActivity
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("date", "'1995-03-01'");
-                params.put("hour", "'1:05:03'");
+                params.put("date", "'"+date+"'");
+                params.put("hour", "'"+hour+"'");
                 params.put("title", "'" + title + "'");
                 params.put("descr", "'" + desc + "'");
                 params.put("author", "'ala'");
                 params.put("id", Integer.toString(eventList.get(posEventToEdit).getId()));
                 return params;
             }
+//            @Override
+//            public Map<String, String> getHeaders() throws AuthFailureError {
+//                Map<String, String> headers = new HashMap<>();
+//                headers.put("key1","value1");
+//                headers.put("key2","value2");
+//                return headers;
+//            }
         };
         MySingleton.getInstance(this).addToRequestQueue(stringRequestEdit);
         doEdit = false;
@@ -266,9 +277,9 @@ public class Event extends AppCompatActivity
     int posEventToEdit;
 
     @Override
-    public void  applyTexts(String title, String desc) {
-        if(doEdit) editEvent(posEventToEdit, title, desc);
-        else addNewEvent(title, desc);
+    public void  applyTexts(String title, String desc, String date, String hour) {
+        if(doEdit) editEvent(posEventToEdit, title, desc, date, hour);
+        else addNewEvent(title, desc, date, hour);
     }
 
 
