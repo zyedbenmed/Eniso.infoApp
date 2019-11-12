@@ -1,0 +1,104 @@
+% Chapter 2
+
+\chapter{Requirements Specification} % Main chapter title
+
+\label{Chapter3} % For referencing the chapter elsewhere, use \ref{Chapter1} 
+
+\section{Introduction}
+After presenting the general context of our project and showcasing all the preliminary studies that we had to go through, we now present the requirements specification which is considered as an essential phase that determines the features that will be achieved in the application. Therefore, in this chapter we will start by identifying the actors. Secondly, we will define the functional requirements of the project. Then we will draw our use cases diagrams. Finally we will specify all the non-functional requirements.
+\section{Actor Identification}
+Our application will have mainly a sole actor, whom is going to ask the chatbot questions and inquire about the enterprises. However, we have a third party actor which is the robot and also an external actor that manages the machine learning side of things on the Dialogflow's console.
+\begin{itemize}
+    \item \textbf{Visitor} : Whoever goes inside the business incubator SoftTech Sousse and ask for information from the robot.
+    \item \textbf{Robot} : is responsible for one use case which is escorting the visitor to the enterprise of his demand.  
+    \item \textbf{Admin} : is an external actor. Basically, Dialogflow uses semi-supervised learning as a machine learning type and to get the most accurate model possible, an admin can continue to manage the learning process for as long as he wants. Therfore, this actor is optional and will not interact directly with the Android application. 
+\end{itemize}
+\section{Functionalities' Overview}
+\subsection{Functional Requirements}
+\begin{itemize}
+    \item \textbf{Simple question} : The visitor can inquire about any enterprise at SoftTech Sousse. The chatbot will give back the information needed.
+    \item \textbf{Forward a phone call} : The visitor can ask the application to call the HR team of any enterprise.
+    \item \textbf{Forward an email} : The visitor can ask the application to leave an email to the HR team of any enterprise.
+    \item \textbf{Escort} : The visitor can ask the robot to escort him to an enterprise.
+    \item \textbf{Change language} : The visitor can change the robot's spoken language.
+    \item \textbf{Modify appearance} : the visitor have the ability to change the theme or modify the visibility of some features on the application.
+\end{itemize}
+\subsection{Use Case Diagram}
+This diagram, illustrated in figure \ref{fig:general use case}, is used to give a global vision on the interactions between the user and the application and what the user is able to demand from the application. Most of the use cases are performed vocally by the visitor, the chatbot will perform the associated act. The application therefore does not demand constant screen touching that can lead to destabilizing the robot.  
+\begin{figure}[H]
+\centering
+\includegraphics[width=165mm,height=180mm]{Figures/UseCaseDiagram.jpg}
+\caption{Global use case diagram}
+\label{fig:general use case}
+\end{figure}
+\subsubsection{Refinement of use case : Inquire about an enterprise}
+By inquiring about an enterprise, the user may demand either some general information about a specific enterprise and its domain of activity, ask for contacts like an email address or lastly ask about job opening or internship availability.    
+\begin{figure}[H]
+\centering
+\includegraphics[width=140mm,height=100mm]{Figures/UseCaseDiagram1.jpg}
+\caption{Inquire about enterprise use case diagram}
+\label{fig:use case inquire}
+\end{figure}
+\paragraph{Textual description of use case : Inquire about an enterprise}
+\begin{itemize}
+    \item \textbf{Title} : Inquire about an enterprise
+    \item \textbf{Resume} : Ask for a specific information about a specific enterprise.
+    \item \textbf{Actors} : User
+    \item \textbf{Pre-conditions} : \begin{itemize}
+        \item Internet connection.
+        \item The robot needs to identify the user and sends a status update to the application. 
+    \end{itemize}    
+    \item \textbf{Post-conditions} : The required information is given.
+    \item \textbf{Scenario} : \begin{enumerate}
+        \item The robot identifies a visitor/user.
+        \item The robot initiate the conversation with a welcome message.
+        \item The user asks the question.
+        \item The question is converted to a string using STT. 
+        \item The string is transferred to Dialogflow to start the intent matching procedure.
+        \item Dialogflow returns the equivalent response to the application.
+        \item The application will convert the response to a speech output using TTS
+    \end{enumerate}
+    \item \textbf{Exceptional scenario} : The application will notify the user if a lost of internet connection occurs.
+\end{itemize}
+\subsubsection{Refinement of use case : Change language}
+As illustrated by the figure \ref{fig:use case change language}, our chatbot supports two languages : French and English. The user can feel free the switch between them.
+\begin{figure}[H]
+\centering
+\includegraphics[width=140mm,height=100mm]{Figures/chang.jpg}
+\caption{Change language use case diagram}
+\label{fig:use case change language}
+\end{figure}
+\paragraph{Textual description of use case : Change language}
+\begin{itemize}
+    \item \textbf{Title} : Change language
+    \item \textbf{Resume} : Ask to change the spoken language of the chatbot.
+    \item \textbf{Actors} : User
+    \item \textbf{Pre-conditions} : \begin{itemize}
+        \item Internet connection.
+        \item The robot needs to identify the user and sends a status update to the application. 
+    \end{itemize}    
+    \item \textbf{Post-conditions} : The switch took place.
+    \item \textbf{Scenario} : \begin{enumerate}
+        \item The robot identifies a visitor/user.
+        \item The robot initiate the conversation with a welcome message.
+        \item The user asks to switch the language.
+        \item the new language code is sent to dialogflow to change the agent language. 
+        \item the TTS and STT engines are re-initialized with the new language code.
+        \item the application indicates to the user that the language is changed.
+    \end{enumerate}
+    \item \textbf{Exceptional scenario} : \begin{itemize}
+        \item The application will notify the user if a lost of internet connection occurs.
+        \item If the user ask to switch to a non-existing language the chatbot will indicate that he only supports French and English.  
+    \end{itemize}
+\end{itemize}
+\subsection{Non-Functional Requirements}
+\begin{itemize}
+    \item \textbf{Maintainable} : The code must be clear to give the ability for future modifications.
+    \item \textbf{Extensible} : To maintain the evolution of the application and come up with future version or add new extensions, we took into consideration the use of an architectural pattern to help well structure the project. 
+    \item \textbf{Ergonomic} : The application needs to provide an excellent user experience through a cool and efficient UI/UX design.
+    \item \textbf{Speed} : The system must be efficient and have a reduced latency.
+    \item \textbf{Reliability} : The information given by the chatbot must be accurate.
+\end{itemize}
+\section{Conclusion}
+In this chapter, we went through the actors that are intended to react with and manage our application and we specified the functional and the non-functional requirements which the application need to respond to. The achievement of this phase of the project will enable us to begin the design phase illustrated in the next chapter. 
+

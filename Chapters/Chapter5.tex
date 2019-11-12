@@ -1,0 +1,256 @@
+% Chapter 2
+
+\chapter{Realization} % Main chapter title
+
+\label{Chapter5} % For referencing the chapter elsewhere, use \ref{Chapter1} 
+\section{Introduction}
+After giving the detailed design of our application in the previous chapter, we are going to devote this last chapter to the implementation and realization phase. To begin with, we will present both the material and the software environments used in our development. Then, we will show the implementation phase. Finally we will exhibit the screenshots of the Android application.
+\section{Work Environment}
+\subsection{Material Environment}
+During our internship at Proxym-IT, we used our personal ASUS laptop characterised by the following : (See Appendix \ref{fig:laptop})
+\begin{itemize}
+    \item OS : Windows 10
+    \item CPU : Intel\textsuperscript{\textregistered} Core\textsuperscript{TM}i5 2.3GHz
+    \item GPU : NVIDIA\textsuperscript{\textregistered} GeFroce\textsuperscript{\textregistered} 920MX
+    \item RAM : 8GB
+    \item Hard Disk : 1TB
+\end{itemize}
+Furthermore, during our early development and testing procedures, we used our own mobile device whose characteristics are detailed below : (See Appendix \ref{fig:phone appendix})
+\begin{itemize}
+    \item Device : HUAWEI Mate 10 Lite
+    \item Android version : Android 8.0 (Oreo)
+    \item CPU : Octa-core 4x2.36 GHz
+    \item GPU : Mali-T830 MP2
+    \item RAM : 4GB
+    \item Internal Memory : 64GB
+\end{itemize}
+And entering a late phase of development we began using the tablet that's intended to be part of the robot "Covea", characteristics are below : (See Appendix \ref{fig:tablet appendix})
+\begin{itemize}
+    \item Device : SAMSUNG Galaxy Tab A 10.1
+    \item Android version : Android 7.0 (Nougat)
+    \item CPU : Octa-core (4x1.6 GHz)
+    \item GPU : Mali-T830 MP2
+    \item RAM : 2GB
+    \item Internal Memory : 16GB 
+\end{itemize}
+\subsection{Software Environment}
+In this subsection we will go through the programming languages used. Then we will mention all the tools and software that helped us achieve our work.
+\subsubsection{Programming Languages}
+\paragraph{Kotlin}~\\
+JetBrains unveiled the first stable version Kotlin v1.0 on February 2016. The reasoning behind this introduction of the new programming language, was that JetBrains were seeking a new language for the JVM that had more specific features and an efficient compiling time similar to JAVA. And to a lesser degree to help drive IntelliJ IDEA sales up. Moreover, At Google I/O 2017, Google officially announced first-class support for Kotlin on Android and as of May 2019 Google declared Kotlin as the preferred programming language for Android application development.\cite{14}
+
+\paragraph{JavaScipt}~\\
+Often abbreviated as JS, JavaScript is a high-level interpreted programming language that appeared in 1995. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js.\cite{15}
+
+\subsubsection{Tools and Software}
+\begin{itemize}
+    \item \textbf{For Android :}
+\end{itemize}
+\paragraph{Android Studio}~\\
+Android Studio is the official integrated development environment (IDE) for Google's Android operating system, built on JetBrains IntelliJ IDEA software and designed specifically for Android development. It is available for download on Windows, macOS and Linux based operating systems. It is a replacement for the Eclipse Android Development Tools (ADT) as the primary IDE for native Android application development.
+Android Studio was announced on May 16, 2013 at the Google I/O conference\cite{16}. We used Android Studio version 3.3 (See Appendix \ref{fig:android appendix}).
+
+\paragraph{Java Development Kit (JDK)}~\\
+The Java Development Kit is a form of a binary product aimed at Java developers. The JDK includes a private JVM and a few other resources to finish the development of a Java Application and compile the code.
+
+\paragraph{Android Software Development Kit (SDK)}~\\
+The software Development Kit is a set of tools put by Google to be able to develop applications for Android as well as going through the debugging process. The Android SDK includes also the Android emulator.
+
+\paragraph{Retrofit}~\\
+Retrofit is a REST Client for Java and Android. It makes it relatively easy to retrieve and upload JSON (or other structured data) via a REST based webservice.
+
+\paragraph{Stetho}~\\
+Stetho is the first Android open source project annouced by Facebook in 2015, and is a sophisticated debug bridge for Android applications. When enabled, developers have access to the Chrome Developer Tools feature natively part of the Chrome desktop browser. Developers can also choose to enable the optional dumpapp tool which offers a powerful command-line interface to application internals.
+
+\paragraph{GitKraken}~\\
+Launched by AxoSoft in 2014, GitKraken is a Git GUI client for Windows, Mac and Linux. In other words, it's a distributed version-control system for tracking changes in source code during software development.It helps developers become more productive and efficient with Git. It's free for non-commercial use.
+
+\begin{itemize}
+    \item \textbf{For Dialogflow :}
+\end{itemize}
+\paragraph{Google Cloud Functions}~\\
+Cloud Functions launched its beta version in March 2017. It automatically runs backend code in response to events triggered by Firebase features and HTTPS requests. The code is stored in Google's cloud and runs in a managed environment. There's no need to manage and scale the servers\cite{17}. It's also supported by Dialogflow to code the fulfillment section.
+
+\paragraph{Node.js}~\\
+Node.js was unveiled in 2009 and is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser. Node.js lets developers use JavaScript to write command line tools and for server-side scripting.
+
+\paragraph{Visual Studio Code}~\\
+Visual Studio Code was announced on April 29, 2015, by Microsoft at the 2015 Build conference. It's a source-code editor with support to many programming languages. We used it to code our cloud functions.
+
+\begin{itemize}
+    \item \textbf{Other :}
+\end{itemize}
+\paragraph{StarUML}~\\
+StarUML is an open source software modeling tool that supports UML (Unified Modeling Language). It was launched in 2001 by MKLab. It supports eleven different types of diagram.
+
+\paragraph{Overleaf}~\\
+We used Overleaf to write this report. Overleaf proviously know as ShareLaTeX is an online, collaborative, real-time LaTeX editor and PDF compiler. Compared to other LaTeX editors, it is a web-based application that is accessible via a web browser. It is written in CoffeeScript, uses the MongoDB database system.
+
+\paragraph{Photoshop}~\\
+We used Photoshop to create our application logo as well as modifying some visual interfaces. Adobe Photoshop is a raster graphics editor developed and published by Adobe Inc. for Windows and macOS. It was originally introduced in 1988. Since then, this software has become the industry standard not only in raster graphics editing, but in digital art as a whole.
+
+
+\section{Implementation}
+In this section we will first describe the development that was done in the Dialoglow console and how we connected Dialoglow with Google Cloud Functions. Secondly, we will explain how we implemented the communication between Dialogflow and the Android project. Finally, the communication between the Android application and the robot.
+\subsection{Dialogflow}
+\subsubsection{Intents and Entities in Dialoglfow}
+The intents and entities are the part where Dialoglfow NLP comes into play, as shown in figure \ref{fig:dialogflow inetrnal}, the NLP algorithm will try to match an intent to the user utterance and then extract entities if any are available. The following will be a list of all the intents and and entities that we've created in the Dialogflow console plus a brief description of their role : 
+\paragraph{\textbf{Intents :}}
+\begin{itemize}
+    \item[--] \textbf{Welcome Intent} : Welcomes the user.
+    \item[--] \textbf{incubator\_intro} : Information about the incubator role.
+    \item[--] \textbf{enterprise\_intro } : General information about an enterprise field of work.
+    \item[--] \textbf{enterprise\_direction} : Direction of an enterprise.
+    \item[--] \textbf{enterprise\_contacts} : Provide contacts of an enterprise.
+    \item[--] \textbf{enterprise\_mail} : Send mail to an enterprise.
+    \item[--] \textbf{enterprise\_phone} : Call an enterprise HR team.
+    \item[--] \textbf{confirm\_direction} : To confirm before escorting the user to an enterprise.
+    \item[--] \textbf{confirm\_mail} : To confirm before sending an e-mail to an enterprise.
+    \item[--] \textbf{change\_language} : To change the chatbot's language.
+\end{itemize}
+
+\paragraph{Entities :}
+\begin{itemize}
+    \item[--] \textbf{TypeOfEnterprise} : The name of the enterprise.
+    \item[--] \textbf{TypeOfLanguage} : The name of the language.
+\end{itemize}
+\subsubsection{Dialogue Control in Dialogflow}
+Dialogue is a process where two speakers negotiate meaning and understanding through their back and forth. However, this conversation can be filled with blurry meaning and ambiguity that's why Dialogflow introduces two types of dialogue, Linear dialog and Non-linear dialog, to help the chatbot understand more and match what the user intent is. Furthermore, to be able to profit form these two types of dialogues we have to either use a concept called "slot filling" or "context" : 
+\begin{itemize}
+    \item Slot filling : It's used in "linear dialog" and it's basically the option to indicate that an entity is required for a specific intent.
+    \item Context : It's usually used in "non-linear dialog" and it's specifically a tool to communicate between two different intents. It provides us with the power to do two things. First, it enables us to link two intents X and Y together, meaning an intent Y will not be matched unless it has the same \textbf{input-context} as the \textbf{output-context} of intent X. Secondly, it allows us to save an entity value detected in intent X and transfer it to an intent Y. 
+\end{itemize}
+As mentionned, contexts and slot filling are used to be able to construct either "linear dialogs" or "non-linear dialogs".
+\paragraph{\textbf{Linear dialogs :}} they are used in the process of collecting all the information necessary to complete a required action. To elaborate more we've attached a screenshot in the figure \ref{fig:linear dialog} below. Basically, the necessary information here is the enterprise name which is a defined Entity that the Dialogflow's NLP needs to extract from the user's request to be able to give an appropriate response. We need to mark the Entity, also called the parameter, as required then we will code the corresponding function that will give an alternative response if the user did not provide it in his first question.\newline In this example, the user is asking for direction, so he can say \textit{"Can you guide me to Proxym"}. The chatbot will give him a correct answer. But if the user says \textit{"Show me the way please"}, here the user did not specify the entity's name (name of the enterprise) therefore the chatbot will respond \textit{"To which company you want to go?"} and will keep on like that until the user provides the company's name and then the chatbot will guide him to the correct destination.
+\newline
+\begin{figure}[H]
+\centering
+\includegraphics[width=160mm,height=70mm]{Figures/linearDialog.PNG}
+\caption{Linear Dialog screenshot}
+\label{fig:linear dialog}
+\end{figure}
+\paragraph{\textbf{Non-linear dialogs :}} In one hand, Linear dialogs can be very powerful and useful when we have a specific set of parameters we wish to collect. On the other hand, Non-linear dialog is something closer to a real-life conversation. When the user says something it's interpreted in the context of what was said before. For example, we have programmed an intent called "confirm-direction" which allows the chatbot to ask for confirmation before escorting the user to a destination. Furthermore, we have another intent called "confirm-email" which also accept a yes/no response but this time it's for sending an email to the HR team. This conversation includes two yes/no responses that give two completely different results. To understands which question is being answered and where in the conversation we are, Dialogflow uses a concept called Contexts. For each intent, we can define multiple input and output contexts. In our example for instance the intent "enterprise-direction" has an output context X that will be the input context for "confirm-direction" and therefore the two intents are attached through one context and the same is for the intents "enterprise-mail" and "confirm-mail". In result Dialogflow will understands when the user says "yes confirm" to what question he is answering. All contexts are added programmatically in the Cloud Functions.
+\subsubsection{Natural Language Processing and Machine Learning}
+The NLP or Natural Language Processing is a subset of Artificial Intelligence that enables Dialogflow to understands human natural language. The NLP algorithm will give Dialoglfow the power to match the user question to one of the defined intents and will extract the entities in his request. Whereas ML or Machine Learning, also a subset of Artificial Intelligence, will give the chatbot the power to become more and more accurate and efficient. Dialogflow adopts the semi-supervised learning as a type of machine learning (see section \ref{semi-supervised}), the semi-supervised learning uses two types of data : labeled and unlabeled. 
+\begin{itemize}
+    \item Labeled data : We have to first create an intent and add some training phrases. This procedure is called labelling data.
+    \item Unlabeled data : Dialoglflow provide a section called "Training". It returns all the ambiguity regarding intent matching and it give us the ability to match an intent to the user utterance manually. This procedure of labelling the unlabeled data is called pseudo-labeling.
+\end{itemize} 
+\subsubsection{Connecting Dialogflow to Cloud Functions}
+The section responsible for managing the dynamic responses in Dialogflow is called "Fulfillment". It has the option to connect to a webhook which enables our web service to receive a POST request from Dialogflow in the form of the response to a user query matched by intents. So to be able to attach our cloud functions to this webhook, we need to deploy our code to google cloud function and extract the appropriate URL. The figure \ref{fig:cloud deploy} below shows the command used to do so.
+\newline
+\begin{figure}[H]
+\centering
+\includegraphics[width=150mm,height=70mm]{Figures/impl.PNG}
+\caption{Deploying Cloud Functions to Google Cloud}
+\label{fig:cloud deploy}
+\end{figure}
+Additionally, we can see in the following figure \ref{fig:url on fulf} how we activated the webhook connection to the corresponding URL.
+\newline
+\begin{figure}[H]
+\centering
+\includegraphics[width=150mm,height=70mm]{Figures/webhook.PNG}
+\caption{Activating the webhook connection}
+\label{fig:url on fulf}
+\end{figure}
+\subsection{Dialogflow \& Android}
+\subsubsection{Authentication}
+In order for the communication between Dialogflow and Android to happen, Dialgflow provides a list of credentials that needs to be copied in the Android project. Then an authentication method will be coded to give us access to the appropriate agent of Dialogflow. The following figure \ref{fig:connecting crened} contains a screenshot from the Android project that shows all the credentials taken from Dialogflow.    
+\begin{figure}[H]
+\centering
+\includegraphics[width=150mm,height=80mm]{Figures/credentails.png}
+\caption{Chatbot credentials}
+\label{fig:connecting crened}
+\end{figure}
+
+\subsubsection{Communication}
+The Android application will send a query to Dialoglfow containing the user's question in the form of a string, plus the appropriate language code. Further, after analysing the request, Dialogflow will send back the response in a Json file that also includes the user initial request, the language code, the intent, the entity and other information about the analysis. The following figure \ref{fig:rsponse dialog} is a screenshot of this Json file.
+\begin{figure}[H]
+\centering
+\includegraphics[width=150mm,height=120mm]{Figures/json.png}
+\caption{Response of Dialogflow}
+\label{fig:rsponse dialog}
+\end{figure}
+\subsection{Android \& robot}
+The communicating between the Android application and the robot was made to satisfy two use cases. The first being when the robot detects a visitor at the lobby. At that moment the Android application needs to start the STT listener in order to capture the visitor's question. And the second is when the user asks to be escorted to a specific enterprise. The application needs to send to the robot the name of the enterprise in question and eventually the robot will get the name and will escort the user to the destination.\newline
+\newline
+In order to manage this communication, we used RESTful webservices that were provided by EnovaRobotics. In the following figure \ref{fig:stetho inspect} we show a screenshot of "Stetho" platform that helped us debug the communication between the Android application and the robot.
+\begin{figure}[H]
+\centering
+\includegraphics[width=150mm,height=100mm]{Figures/sethomini.PNG}
+\caption{Screenshot Stetho}
+\label{fig:stetho inspect}
+\end{figure}
+\section{Graphical interfaces}
+\begin{itemize}
+    \item Logo of the application
+\end{itemize}
+We managed to find an existing picture of a robot and after modification using Photoshop we came up with the logo shown in the figure below. We also had to extract the picture in two different resolutions to fit perfectly both the phone and the tablet we used.   
+\begin{figure}[H]
+\centering
+\includegraphics[width=25mm,height=25mm]{Figures/applogo.png}
+\caption{Logo of the application}
+\end{figure}
+
+\begin{itemize}
+    \item Introduction Screens
+\end{itemize}
+These screens will only be shown on first opening of the application. They fulfil the introduction procedure. This notion of introduction screens is frequently used by complex application throughout the first use of the application. They guide the user and show him the basic functionalities and how to access them. The user can move to the next screen by swiping right to left. 
+\newline
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=50mm, height = 90mm]{Figures/1.jpg}
+  \caption{Introduction screen 1}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=50mm, height = 90mm]{Figures/2.jpg}
+  \caption{Introduction screen 2}
+\end{minipage}
+\end{figure}
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=50mm, height = 90mm]{Figures/3.jpg}
+  \caption{Introduction screen 3}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=50mm, height = 90mm]{Figures/4.jpg}
+  \caption{Introduction screen 4}
+\end{minipage}
+\end{figure}
+\newpage
+\begin{itemize}
+    \item Loading Screen and Permission
+\end{itemize}
+If we are opening the application for the first time, the loading screen will be shown just after the introduction screens and after that we will need to activate the permission of audio recording. However, when we open the application another time the introduction screens and the permission interface will not be shown and instead the first interface that will pop up is the loading screen. In fact this interface acts as splash screen and during the time of its appearance the chatbot will go through the authetication procedure with Dialogflow. Thereby, when we start talking to the chatbot we will not get the latency caused by all the authentication and the initialization of the STT and TTS engines.
+\begin{figure}[H]
+\centering
+\includegraphics[width=50mm]{Figures/6.jpg}
+\caption{Permission screen}
+\end{figure}
+
+\begin{itemize}
+    \item Main screen
+\end{itemize}
+This is the main interface where a dynamic face can be visible to the user, also the chatbot response can be shown or removed based on the user's choice.
+\begin{figure}[H]
+\centering
+\includegraphics[width=50mm]{Figures/7.jpg}
+\caption{Main screen}
+\end{figure}
+\begin{itemize}
+    \item Settings screen
+\end{itemize}
+This is the settings activity, where the user can change the theme of the application, show or hide the robot response or change the language manually.
+\begin{figure}[H]
+\centering
+\includegraphics[width=.3\textwidth]{Figures/8.jpg}
+\caption{Settings screen}
+\end{figure}
+\section{Conclusion}
+In this chapter we started by describing our work environment in which we stated the material tools and all the software used along the way to achieve this project. Then we detailed all the implementation we had to go through. Finally we showed the graphical interfaces of the Android application. 

@@ -1,0 +1,228 @@
+% Chapter 2
+
+\chapter{Preliminary Study} % Main chapter title
+
+\label{Chapter2} % For referencing the chapter elsewhere, use \ref{Chapter1} 
+
+%----------------------------------------------------------------------------------------
+
+% Define some commands to keep the formatting separated from the content 
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\tabhead}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{\bfseries#1}}
+\newcommand{\option}[1]{\texttt{\itshape#1}}
+
+%----------------------------------------------------------------------------------------
+
+\section{Introduction}
+In this chapter entitled "Preliminary Study", we give an insight at chatbots, their role and the algorithms that helps manage them. Then we present the state of the art where we go through the existing solutions and products. Thereafter we cover the available technologies that we had to choose from and the ones we eventually picked while specifying the purpose behind these choices.
+
+%----------------------------------------------------------------------------------------
+
+\section{Chatbots}
+The term is in-fact a combination of "Chat", which means an online conversation, and "bot", i.e., robot. Furthermore chatbots are a computer program capable of interacting with users and stimulating a real time conversation whether textually or vocally. These programs are managed by a set of predefined rules to help find the convenient response to the user's request. They are usually integrated into websites, mobile applications or instant messages to help in the customer service field. Moreover, chatbots are classified to three generations according to the technology used (See appendix \ref{fig:Chatbots evolution diagram}) : The first generation are rule based meaning the bot only understand an exact query input and can not detect a purpose nor extract anything from the user request. With the second generation, machine learning was introduced and the bot is capable of understanding natural language and communicating in a more human and fluid way with the user. The third generation is the most sophisticated, the bot will be able to learn and adapt to users' requests more and more with time, i.e., it's a continuous process and the bot will get smarter by each request\cite{3}.
+As a matter of fact, chatbots are not made to be only a cool feature at your favorite website. In fact they're designed to take care of customers' requests and help reduce the load applied at the HR team and even be your own personal assistant. That's why the major companies like Apple, IBM, Amazon, Google\ldots invested the time and the money to develop their own products and solutions. In addition, the nuisance of all intelligent chatbots, i.e., starting from the second generation, is a product of combining two major branches of the artificial intelligence : \textbf{Natural Language Processing} and \textbf{Machine Learning}.
+
+
+
+%----------------------------------------------------------------------------------------
+\subsection{Natural Language Processing (NLP)}
+Although machines always had the capabilities to understand languages, as in programming languages which tend to have small vocabularies and follow highly structured conventions, as a matter of fact code will only compile and run if it's 100 percent free of spelling and syntactic errors. Of course this is quite different from human languages, also called natural languages, containing large and diverse vocabularies with several words and meanings and all sorts of word play and double meaning. People also make linguistic faux pas when writing or speaking and leaving details therefore things can be a bit ambiguous. This eventually led to the creation of Natural Language Processing, an interdisciplinary field combining computer science and linguistics. That's why NLP is described as the technology used to aid computers to understand the human's natural language\cite{4}.
+The NLP algorithm, as shown in figure \ref{fig:NLP cycle diagram}, firstly detects the input language and then knowing all the grammatical rules it will deconstruct sentences into bite-sized pieces which could be more easily processed, this procedure is called syntactic analysis. Then we go through the semantic analysis where the algorithm deciphers, understands, and makes sense of each piece\cite{5}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=150mm,height=60mm]{Figures/nlp.png}
+\decoRule
+\caption{NLP cycle diagram}
+\label{fig:NLP cycle diagram}
+\end{figure}
+\subsection{Machine Learning}
+American computer scientist and former chairman of machine learning department at Carnegie Mellon University, Tom M. Mitchell, said in his book entitled "Machine Learning" :\textit{ "The field of machine learning is concerned with the question of how to construct computer programs that automatically improve with experience."}\cite{6}\newline
+In other words, machine learning is a subset of artificial intelligence that provides machines the ability to learn and evolve using previous data. Hence, with more data the accuracy gets higher. However, there are different ways in which the machine can learn, as we can see in the table 2.1 below, we list the types of learning alongside the major difference between them.
+\newline
+
+\begin{table}[hbt!]
+\label{tab:Classification of machine learning by types of learning}
+\centering
+\begin{tabular}{ |l||l|l|l|  }
+ \hline
+ \multicolumn{4}{|c|}{Classification by types of learning} \\
+ \hline
+    &Supervised &Unsupervised &Semi-supervised \\
+    &Learning&Learning&Learning\\
+ \hline
+ \hline
+ Basis   & - Classification  &   - Clustering &  - Classification \\
+  &- Regression & - Association & -Regression\\
+ \hline
+ Algorithm used & - Random forest  &  - K-means clustering   & - Random forest \\
+  & - Linear regression & - Apriori algorithm & - Nearest neighbor\\
+   & - Nearest neighbor & & \\
+  \hline 
+\end{tabular}
+\caption{Classification of machine learning by types of learning}
+\end{table}
+
+\subsubsection{Supervised Learning}
+Machine learning builds models to predict future outcomes and that's exactly what the different styles mentioned before do in their own special ways. As for supervised learning, it takes labeled data that already has a correct answer, like images that have been labeled as "cat" or "dog" and tries to learn how to differentiate between them and therefore predict future inputs. It's supervised because we provide the model with data and correct its prediction if they're wrong. That's called \enquote{training the model}. Training stops when the algorithm achieves an acceptable level of classification that leads to high performance\cite{7}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=60mm,height=50mm]{Figures/supervised-learning.png}
+\decoRule
+\caption{Classification in supervised learning}
+\label{fig:Classification in supervised learning}
+\end{figure}
+
+\subsubsection{Unsupervised Learning}
+In contrast to supervised learning, unsupervised learning occurs when the data in our training set is not labeled. In fact, each piece of data passed to our model during training is solely an unlabeled input object, there's no corresponding label that's paired with the sample. Essentially with unsupervised learning the model will be given the unlabeled data set and it's going to attempt to learn some type of structure from the data and will extract the useful information or features and then tries to classify and categorize the data through the use of clustering algorithm \cite{8}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=80mm,height=60mm]{Figures/cluster-image.png}
+\caption{Clustering in unsupervised learning}
+\label{fig:Clustering in unsupervised learning}
+\end{figure}
+
+\subsubsection{Semi-supervised Learning} \label{semi-supervised}
+Semi-supervised learning kind of takes a middle ground between supervised and unsupervised learning, hence the name. In fact it uses a combination of techniques from the previous two, using both labeled and unlabeled inputs. The reasoning behind semi-supervised learning is, when having an enormous amount of data we can just label a small portion of it and leave the rest unlabeled, this is called pseudo-labeling. Afterwards we use the labeled data to train our model (supervised learning) and then we use our model to predict the remaining unlabeled data (unsupervised learning), we then take these predictions and label each piece of unlabeled data with the individual outputs that were predicted for them. As a result, all our data is now labelled. This process of labeling the unlabeled data with output of their prediction is the very essence of pseudo-labeling. After finishing with the process of pseudo-labeling, we then train our model on the full data set. Therefore, we were able to train on a vastly larger data set that otherwise may have potentially taken many tedious hours of human labor to manually label\cite{9}.
+\section{State of the Art}
+In this section we will go through a number of existing products and solutions that resemble our project. we will thoroughly critic them in order to extract their positive and negative points and eventually try to better them.
+\subsection{Existing Solutions}
+\subsubsection{Alexa by Amazon}
+Amazon initially released Alexa in November 2014. Alexa can execute tasks based on the user's requests. In fact, it plays the role of your own personal assistant at home. However, for Alexa to be functional, the purchase of a device called Amazon Echo is mandatory. It's responsible for executing  the commands transferred by Alexa. At the start of 2018, Amazon launched a mobile version of Alexa.
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=65mm, height=60mm]{Figures/amazon-alexa.png}
+  \caption{Amazon Echo}
+  \label{fig:Amazon Echo}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=50mm]{Figures/amazon_app.jpg}
+  \caption{Alexa application}
+  \label{fig:test2}
+\end{minipage}
+\end{figure}
+
+\subsubsection{Google assistant / Siri / Cortana / Bixby}
+They're all pre-installed assistants depending on the device's manufacturer. In fact, they're an embedded feature rather than an actual application. They're triggered by key words like "Hey Google", "Siri", "Hello Bixby". Google assistant is found in all the devices that support the operating system Android, it's until lately that samsung started using their own "Bixby". The famous Siri is a product of Appel and last and least Cortana is the chatbot introduced by Microsoft.
+\subsubsection{Connie by IBM}
+Although the previous examples are the most known, they're somewhat a little bit off our topic. In fact, we want to develop a chatbot that acts as the voice and brain of our robot "Covea" and not an intelligent assistant to manage the functionalities and features of our mobile device. Following this context, IBM released in 2016 a prototype that mirrors our ambitions. The robot "Connie", a concierge at the Hilton hotel in West Virginia. Connie was supported by IBM Watson, IBM intelligent assistant. Furthermore, Connie is able to help guests to their rooms, suggest movies at the cinema or places to visit in the city.
+\begin{figure}[H]
+\centering
+\includegraphics[width=100mm,height=70mm]{Figures/connie-robot.jpg}
+\caption{Connie the robot}
+\label{fig:connie}
+\end{figure}
+\subsubsection{Pepper by SoftBank Group Corp.}
+Developed by the Japanese group SoftBank, Pepper is a robot powered by the artificial intelligence provided by the American enterprise Affectiva Inc. The robot is used as a guide at shopping centers and airports. It basically can show the user the way to a specific spot or an airport's gate or suggest good place to eat using the big tablet mounted on his chest.
+\begin{figure}[H]
+\centering
+\includegraphics[width=100mm,height=70mm]{Figures/pepper.jpg}
+\caption{Pepper the robot}
+\label{fig:pepper}
+\end{figure}
+\subsubsection{Furhat by FurhatRobotics}
+Furhat Robotics is a Swedish startup. They released recently their project, the robot Furhat. This robot is being tested in shopping centers and train stations, it's capable to interact with passengers and help with their demands and questions concerning the establishment where it's located. Moreover, the big added value that Furhat brings is that it can change its facial grimace based on generated emotions.
+\begin{figure}[H]
+\centering
+\includegraphics[width=50mm,height=45mm]{Figures/furhat.jpg}
+\caption{Furhat the robot}
+\label{fig:furhat}
+\end{figure}
+\subsection{Critical Study}
+As shown in table 2.2 below, this section is meant to critic the existing solutions mentioned previously, giving their positive and negative points alongside their prices.
+
+\begin{table}[hbt!]
+\label{tab:critical study}
+\centering
+\begin{tabular}{ |l||l|l|l|  }
+ \hline
+ \multicolumn{4}{|c|}{Critical study} \\
+ \hline
+    &Advantages & Drawbacks &Price \$ \\
+ \hline
+ \hline
+ Alexa   & - Implements the concept of  &   - Home assistance only &  - 50-150 \\
+  & smart home& - Not suitable for our needs & \\
+  & - Supports multiple languages & & \\ 
+ \hline
+ Siri, Bixby.. & - Free and pre-installed &  - Phone assistance only  & - Free \\
+  & - Supports multiple languages & - Unusable without the phone & \\
+   &  & - Not suitable for our needs& \\
+  \hline 
+  Connie & - Interactive & - Not commercialized & N/A \\
+   & - built using IBM Watson & - Prototype & \\
+    & & -Supports English only & \\
+    \hline
+    Pepper & - Robust & - Needs re-configurations & 1.600\\
+     & - Support multiple languages & to adapt to a new place & \\
+     \hline
+     Furhat & - Channels emotions & - Yet to be officially launched & - N/A \\
+      & - Changes grimaces & - Yet to be tested in public & \\
+       & - Looks are chosen by users & & \\
+       \hline
+\end{tabular}
+\caption{Critical study table}
+\end{table}
+To encapsulate what the table 2.2 shows, the two first studied solutions don't suit our objective, nevertheless they were mentioned to go through the most known chatbots nowadays. In addition the other solutions all have major flaws, they're either a prototype meaning not commercialized or too expensive in the case of Pepper.      
+%\section{Proposed Solution}
+
+%----------------------------------------------------------------------------------------
+\section{Technological Choice}
+This section concerns only the technologies of the \textbf{intelligent assistant}, the \textbf{Speech-to-Text} and the \textbf{Text-to-Speech}.
+First, we will enumerate the technologies at hand that can allow us to accomplish our development while indicating what we chose and the reasons behind it.   
+\subsection{Available Technologies}
+During our research phase, we found numerous technologies that we can use. Moreover, to identify each one's strong points we had, inevitably, to try most of them and develop some demos and give some demonstrations to both Proxym-IT and EnovaRobotics. 
+\subsubsection{Intelligent Assistant}
+\paragraph{Dialogflow}~\\
+Bought by Google in September 2016, Dialogflow was previously known as Api.ai. It's a tool that develops human-machine interaction based on natural language processing. Dialogflow gives users the ability to use a standard edition for free with some limitations concerning the number of requests per minute\cite{10}.
+
+
+\paragraph{Watson}~\\
+Watson is a strong artificial intelligence system capable of managing requests and responding to questions using its own NLP. It was developed by IBM and named after IBM's first CEO Thomas J. Watson. It was initially introduced in 2010 and became open source in 2013. However, Watson does not support a fully free plan. IBM only provides a 30 days tutorial to try out the system and test its efficiency\cite{11}.
+
+
+
+\paragraph{Rasa}~\\
+Rasa, released in December 2016, is yet another machine learning tool for developers to build and deploy their own chatbots and intelligent assistants. In contrary to Dialogflow and Watson, Rasa is fully free and open source tool.
+
+
+
+\subsubsection{TTS and STT}
+\textbf{T}ext \textbf{T}o \textbf{S}peech, is an engine that converts written text or strings to wave-forms that can be outputted as audio sound. Whereas \textbf{S}peech \textbf{T}o \textbf{T}ext, also known as Speech Recognition, is the engine that convert speech into text output. However, STT is more complex that TTS. It basically saves the input audio and using AI it begins the procedure of probability mapping using NLP and neural networking. Evnetually, an output text is produced.   
+
+\paragraph{Google Cloud}~\\
+Google Cloud provides a very powerful STT engine that is capable of major noise reduction. Its accuracy levels is indeed very high and Google uses it in their products like Google Assistant and Youtube. Although the api is open source, it's not free\cite{12}. 
+
+\paragraph{IBM}~\\
+IBM has developed their own solution when it comes to STT and TTS. However, they're not as accurate and powerful as Googles'. In addition, IBM gives developers only a 30 days free trial to test the product.
+
+\paragraph{Android in-build libraries}~\\
+Android Studio gives us the opportunity to try out TTS and STT for free. On one hand TTS is very comparable with Google Cloud solution, on the other hand STT has quite a poor quality. It can not detect the spoken language, does not process proper nouns and is highly affected by background noise\cite{13}. 
+
+
+\subsection{Chosen Technologies}
+As the technologies available more or less gave the same result, my supervisor at Proxym-It and I had a meeting with EnovaRobotics where we presented all the solutions and highlighted their good and their bad points alongside all their pricing plans. Thereafter, we took the pricing plan as the first criteria and we all agreed to work with the tools that are available for free. The table 2.3 below indicates the chosen technologies.   
+\begin{table}[hbt!]
+\label{tab:technological choice}
+\centering
+\begin{tabular}{ |c|c|  }
+ \hline
+ Technology & The choice \\
+ \hline
+ \hline
+    \textbf{Intelligent Assistant}& Dialogflow \\
+ \hline
+ \textbf{TTS}  & Android in-build library \\
+  \hline
+ \textbf{STT}  & Android in-build library \\
+  \hline 
+\end{tabular}
+\caption{Technological choices}
+\end{table}
+\section{Conclusion}
+In conclusion, to be able to develop an intelligent conversational agent, the developer needs to possess some prerequisites about artificial intelligence and machine learning, hence why we dedicated the first part of this chapter to explain and go through the notions of AI and ML and tried to simplify NLP.
+Then, we started to dive more into our work, describing the existing solutions and critiquing them. Eventually we showcased the technologies in hand and the ones that we chose. Thus, to start our development, it is inevitable to introduce in the next chapter, the specification of our project. 

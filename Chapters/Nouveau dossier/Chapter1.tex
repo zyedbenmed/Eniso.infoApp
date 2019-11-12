@@ -1,0 +1,93 @@
+% Chapter 1
+
+\chapter{General Context} % Main chapter title
+
+\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1} 
+
+%----------------------------------------------------------------------------------------
+
+% Define some commands to keep the formatting separated from the content 
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\tabhead}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{\bfseries#1}}
+\newcommand{\option}[1]{\texttt{\itshape#1}}
+
+%----------------------------------------------------------------------------------------
+
+\section{Introduction}
+In this chapter entitled "General Context", we give a brief introduction to the host enterprise and we succinctly go through some projects that they developed. Then, we present the project context and try to simplify the object in question. Finally, we cover the formalism adopted during our work.   
+
+%----------------------------------------------------------------------------------------
+
+\section{Host Company}
+This project is presented officially by \textbf{Proxym-IT} where we were hosted and developed our application. However, the project is in fact in collaboration with the enterprise \textbf{EnovaRobotics} where we tested the final product. As we were officially an intern of and hosted by \textbf{Proxym-IT}, the following will be somewhat a detailed presentation of the latter. Nevertheless, we will give a brief insight at EnovaRobotics as well. 
+\begin{figure}[th]
+\centering
+\includegraphics[width=100mm,height=30mm]{Figures/Proxym-Group.png}
+\caption{Proxym Group Logo}
+\label{fig:Proxym Group Logo}
+\end{figure}
+
+\subsection{Proxym Group}
+Proxym Group is a global IT player, founded in January 2006,  recognized as a Digital Services provider specialized in web and mobile applications. The sales management headquarters of Proxym Group is located in France, however the technical staff is hosted at Proxym-IT in Sousse, Tunisia (See Appendix \ref{fig:proxym appendix}). The enterprise dispose of a high level team composed of hundreds of engineers graduated from Tunisian and French Engineering schools. Proxym Group successfully liveried more than 200 project. More than 150 mobile application were developed for huge enterprises among them the Ministry of Interior of the United Arab Emirates, La Roche Posay, Orange Labs, Optic 2000 and others.
+
+
+\subsection{Expertise}
+Proxym Group has developed a huge expertise in the following domains :
+\begin{itemize} 
+\item E-commerce
+\item Applications Web/Mobile
+\item Mobile solutions
+\item E-health 
+\item IBM technologies
+\end{itemize}
+\newline
+From the vast mobile solutions developed within Proxym-IT, we showcase the brief following list : 
+\begin{itemize} 
+\item \textbf{QIIB} : Qatar International Islamic Bank
+\item \textbf{Bayanati} : Management of human resources of all the ministries of the UAE and federal agencies.
+\item \textbf{Tchapper} : Real Time messaging application
+\item \textbf{UIB} : United International Bank Tunisia
+\item \textbf{Ministry of Interior UAE} : 30 services included for 4 major department of the ministry : Traffic, Police, Residency and Civil
+\item \textbf{Betterise} : E-Health
+\end{itemize}
+
+\subsection{EnovaRobotics}
+EnovaRobotics was born after an experience over a decade in teaching and research in the field of robotics. It opened in 2014 and is a company specialized in robot design and manufacturing.
+\begin{figure}[H]
+\centering
+\includegraphics[width=80mm,height=20mm]{Figures/enova_logo.png}
+\decoRule
+\caption{EnovaRobotics Logo}
+\label{fig:EnovaRobotics Logo}
+\end{figure}
+
+%----------------------------------------------------------------------------------------
+
+\section{Project Context}
+EnovaRobotics has build a humanoid robot "Covea", the robot will have a part-time job serving as a receptionist agent at the lobby of the business incubator SoftTech Sousse. "Covea" has the size of a human, tall and thin. A tablet is placed to represent its head. The tablet will support the application that we will develop. The application will eventually show a friendly animated face. Our chatbot will initiate the conversation by welcoming whoever the humanoid robot identifies as a visitor of SoftTech Sousse. Thereafter the user can vocally ask about general information or the domain of activity of any enterprise in the incubator, get ideas about the role of a business incubator, ask the robot to guide them to a specific enterprise and even ask to call the HR team to fix an ensuing meeting. Once the user/visitor gets away from the robot, "Covea" will update its status and sends it to the application letting in the process the chatbot to go into a standby mode. The following figure \ref{fig:Covea} shows a picture of the robot "Covea".
+\begin{figure}[H]
+\centering
+\includegraphics[width=45mm,height=80mm]{Figures/covalink.jpg}
+\decoRule
+\caption{The robot Covea}
+\label{fig:Covea}
+\end{figure}
+\section{Formalism}
+\subsection{UML}
+We used UML (Unified Modeling Language) for describing and modeling the specifications of the project. UML is a general-purpose, developmental, modeling language in the field of software engineering that is intended to provide a standard way to visualize the design of a system. It is very flexible and versatile and widely used across the globe, which makes it easier to grasp by other people. Most software engineers are probably familiar with it.
+
+\subsection{Methodology}
+The incremental build model is a method of software development where the model is designed, implemented and tested incrementally (a little more is added each time) until the product is finished. It involves both development and maintenance. The product is defined as finished when it satisfies all of its requirements. This model combines the elements of the waterfall model with the iterative philosophy of prototyping. Moreover, it is more flexible when it comes to changing scopes and requirements. The figure \ref{fig:model} below illustrates how an incremental model works.
+\begin{figure}[H]
+\centering
+\includegraphics[width=140mm,height=80mm]{Figures/increm.png}
+\caption{Incremental model}
+\label{fig:model}
+\end{figure}
+
+Furthermore, the implementations of the project were somehow blurry at first and we anticipated the fact that we may need to go through a very detailed research period to be able to identify the technologies that we will be using (in regards to the intelligent assistant, the speech-to-text and text-to-speech) which can lead us to change the requirements of project multiple times. Therefore we needed a methodology that fits this changes in scopes, so we went with the incremental model.     
+
+\section{Conclusion}
+In this chapter entitled "general context" we presented the company that hosted us during this internship. Then we explained the project context and the formalism adopted in the development cycle. In the next chapter we will go through all the preliminary studies that we had to carry out in order to begin the project specification and the design.

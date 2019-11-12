@@ -1,0 +1,94 @@
+% Chapter 2
+
+\chapter{Design \& Architecture} % Main chapter title
+
+\label{Chapter4} % For referencing the chapter elsewhere, use \ref{Chapter1} 
+
+\section{Introduction}
+After going through the specification chapter in which we answered the question ''What to code'', we now dive into the architecture and design chapter in which we will answer the question ''how to code''. First, we will elaborate the global architecture of the project. Then we will specify the architecture of both the front end (Android Studio) and the back end (Dialogflow). Thereafter we will describe the scenarios using the sequence diagrams.
+
+\section{Global Architecture}
+In this section we reveal the global architecture of our project. The figure \ref{fig:global arch} showcases how the communication between our Android application, Dialogflow and the robot is handled. Furthermore Dialogflow is connected to Google Cloud Functions through a webhook. To elaborate more, Cloud Functions lets you run backend code on Google Cloud infrastructure.
+\begin{figure}[H]
+\centering
+\includegraphics[width=150mm,height=90mm]{Figures/arch-global.png}
+\caption{Global architecture of the project}
+\label{fig:global arch}
+\end{figure}
+\subsection{Dialogflow Internal Architecture}
+The figure \ref{fig:dialogflow inetrnal} explains how Dialogflow processes the user's utterance. Basically, our Android application will send a query to Dialoglflow, the query will contain the user's input plus a specified language code. Dialogflow will proceed then using its algorithm of the Natural Language Processing to try and match the user's intent based on his utterance, an intent is basically what the user want to know meaning the global objective of the user's question. Once the intent is identified, the algorithm will extract  the entity if it's available, an entity is equivalent to a parameter or a variable. Then, the webhook will call the equivalent function in the Google Cloud Functions based on the name of the intent and will provide it with the right parameters. Finally a response is returned to Dialogflow in the form of a Json file which will be sent back to the application.   
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=70mm, height=220mm]{Figures/fulfillment-diagram.png}
+\caption{Internal Architecture of Dialogflow}
+\label{fig:dialogflow inetrnal}
+\end{figure}
+\section{Detailed Design}
+\subsection{Architectural Pattern}
+We chose \textbf{MVVM} as an architectural pattern for our Android Project. It stands for \textbf{M}odel \textbf{V}iew \textbf{V}iew\textbf{M}odel. It consists obviously of three parts : \begin{itemize}
+    \item View : What the user sees, i.e., the activity's interface.
+    \item Model : Represents the business objects that encapsulate the data and behavior of the application domain.
+    \item ViewModel : It's a model specifically designed for the view so it's a class with properties that represent the state of the view and methods that implement the logic behind the view. The big added value that ViewModel brings to the table is that it can survive configuration changes, e.g., the rotation of the phone is considered to be a configuration change which causes the whole activity to get torn down and then recreated so we need to properly save and restore data every time to prevent losing it, therfore the use of ViewModel which survives configuration changes.
+\end{itemize}
+Furthermore, the thing that distinguish MVVM from other architectural pattern like MVC and MVP is the notion of \textbf{LiveData}. LiveData is an observable data holder class that is lifecycle aware, this means that it understands whether the user interface (UI) is on-screen, offscreen or destroyed. Therefore LiveData doesn't trigger useless UI updates when the activity is offscreen. LiveData objects will usually be kept in the ViewModel class. The figure \ref{fig:mvvm} shows how we implemented the MVVM architecture into our project. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=130mm,height=110mm]{Figures/mvvm.png}
+\caption{Architecture of Android Project}
+\label{fig:mvvm}
+\end{figure}
+\subsection{Package Diagram}
+To be able to understand the role of each section and to facilitate the maintainability of our code, we arranged our project into multiple packages, each of them contains classes that have similar role. The diagram represented in figure \ref{fig:packaging} illustrates how we managed our packaging structure.
+\begin{figure}[H]
+\centering
+\includegraphics[width=130mm,height=120mm]{Figures/PackageDiagram.jpg}
+\caption{Package Diagram}
+\label{fig:packaging}
+\end{figure}
+As the diagram shows, the project is composed of the following packages :
+\begin{itemize}
+    \item \textbf{Views} : Contains all the users interfaces.
+    \item \textbf{ViewModels} : Contains all the viewmodels.
+    \item \textbf{Service} : Contains two packages : 
+    \begin{itemize}
+        \item \textbf{Models} : Contains the model classes.
+        \item \textbf{Repositories} : Contains the repositories interfaces.
+    \end{itemize}
+    \item \textbf{Utilities} : Contains a class of all the repetitive methods and the constants used through out the project. Plus another package.
+    \begin{itemize}
+        \item \textbf{Libraries} : Contains the classes of all the libraries used.
+    \end{itemize}
+\end{itemize}
+\subsection{Sequence Diagrams} 
+These diagrams are the chronicle graphical representations of the interactions between the user and the system.
+\subsubsection{Sequence diagram for "initiate the conversation"}
+In order to start interacting with the chatbot, and as illustrated in the figure \ref{fig:seq diag converstaion}, the robot needs to detect a user. Basically the robot will be placed at the lobby of SoftTech Sousse and will be responsible for detecting new visitors. Once the robot detects a visitor it will approach him and it will update the status value into "3" through a PUT request to the API. The Android application will periodically check the status value through a GET request and once the value is equal to "3" the chatbot will display the welcome message and start the STT listener. Eventually when the visitor is done using the application the robot will re-update the status value into "1" indicating that the user is no long on the perimeter, therefore once the application get a different status value than "3", it will stop the STT listener and enter a standby mode.
+\begin{figure}[H]
+\centering
+\includegraphics[width=165mm,height=155mm]{Figures/initiateconvo.jpg}
+\caption{Initiate conversation sequence diagram}
+\label{fig:seq diag converstaion}
+\end{figure}
+
+\subsubsection{Sequence diagram for "Inquire about an enterprise"}
+Once the conversation has been initiated by the chatbot, the user/visitor can now ask his questions. As shown on the figure \ref{fig:seq inquire}, the user will ask a question then the application will get the string through conversion using STT and will add the appropriate language code and send a query to Dialoglflow. Thereafter, Dialogflow will identify the intent and extract the entities if any are available using its NLP algorithm and will send those parameters to the Google Cloud Functions using a Webhook with the specified URL. Following that, the Cloud Functions will return the equivalent response to Dialogflow and subsequently to the user.
+\begin{figure}[H]
+\centering
+\includegraphics[width=160mm,height=150mm]{Figures/intercationSequence.jpg}
+\caption{Inquire about an enterprise sequence diagram}
+\label{fig:seq inquire}
+\end{figure}
+\subsubsection{Sequence Diagram for "Escort the user"}
+The ultimate and the most important use case we have is escorting the user to an enterprise of his choice. To be able to accomplish this, first the user will announce his demand to the chatbot. The application will then proceed by sending his query to Dialoglflow to identify the intent and extract the entity. Then Dialogflow will send these parameters to the Cloud Functions to get the adequate response. After that The response is transferred back to Dialoglflow and subsequently to the application and finally to the user. The response is something like \textit{"Follow me. I'll take you to EnovaRobotics."}. Afterwards the application will send the name of the enterprise to the robot using a rest api. The robot will eventually start moving.     
+\begin{figure}[H]
+\centering
+\includegraphics[width=170mm,height=150mm]{Figures/escort_user.jpg}
+\caption{Escort the user sequence diagram}
+\label{fig:seq inquire}
+\end{figure}
+\section{Conclusion}
+This Design phase had as an objective to expose globally and specifically the functionalities of our application consequently facilitating the implementation task. The next chapter will theme the realization part, we will concentrate on the elaboration of our solution as well as the obtained results.  
+
+
+
